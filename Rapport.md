@@ -3,6 +3,8 @@ Rapport
 Introduction à la cybersécurité
 ==============
 
+Auteurs: BACKERT Noé, BANCHET Antoine, BARA Yassmina
+
 # Table des matières
 1. [Introduction](#introduction)
 2. [Footprint](#footprint)
@@ -54,10 +56,27 @@ On peut donc augmenter la taille des paquets jusqu'à obtenir une erreur de time
 
 En tâtonnant, on observe qu'il y a une erreur en envoyant un paquet au dessus de 65507 bytes. Le buffer ne doit pas accepter autant. 
 
----
-\
-\
-\
+
+Autrement, on peut vérifier cela à l'aide du script python suivant :
+
+    import os
+    import sys
+
+    if len(sys.argv)<=1:
+        print("Error : Arg missing, ip required")
+    else: 
+        ip = sys.argv[1]
+        for size in range(0,80000,8):
+            os.system(f"ping -s {size} -c 1 {ip}")
+
+Celui-ci teste un ping vers l'adresse ip mis en argument lors du lancement du script en augmantant à chaque fois d'un octet, jusqu'à qu'une erreur intervienne.
+
+On obtient alors bien une erreur vers la taille trouvée en tâtonnant :
+
+>![pictureNmapPing](assets/pingError.png)
+
+Autrement, on peut tout simplement effectuer un nmap sur l'ensemble du sous-réseau :
+
 ![pictureNmapPing](assets/nmapPing.png)
 
 
@@ -67,19 +86,23 @@ La commande suivante nous permet d'envoyer une requête de ping à toutes les ad
 
 Cela nous permet ainsi de voir quels addresses IP sont utilisées, cependant, on ne peut pas deviner l'identité de cette machine en utilisant seulement cette commande.
 
-2. Port scan
+---
+## 2. Port scan
 
-![pictureNmap](assets/nmap.png)
+![pictureNmap](assets/portScan.png)
 
 Cette commande nous permet de trouver tous les ports ouverts et également de trouver des informations supplémentaires sur la machine, comme son addresse MAC.
 
-Cette commande requiert l'accès root avec la commande sudo
+    sudo nmap 192.168.137.68
 
-    sudo nmap 192.168.137.0/24 -sS
-
-
-
-3. Vulnerabily scan
+Cette commande requiert l'accès root.
 
 
-4. Patching the Vulnerabily
+## 3. Vulnerabily scan
+
+    traceroute raphaelviera.fr
+
+traceroute - affiche le chemin d'un paquet vers le domaine entré
+
+![traceroute](assets/traceroute.png)
+## 4. Patching the Vulnerabily
