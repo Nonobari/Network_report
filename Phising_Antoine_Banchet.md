@@ -56,7 +56,7 @@ On voit l'adresse MAC de la cible connexté au point d'accès Wi-Fi, ici Noé. U
 
 Remarque :
 On pourrait déconnecter de manière répétée les utilisateurs du réseau Wi-Fi en envoyant en boucle des paquets de déauthentification, ce qui rendrait la connexion au vrai Wi-Fi impossible. Cela forcerait ainsi les utilisateurs à se connecter au faux Wi-Fi. Wifipumpkin3 permet de réaliser cette action.
-<img src = "assets/wp3_deauth.png" width = 500>
+<img src = "assets/wp3_Deauth.png" width = 500>
 On peut utiliser aireplay-ng pour le faire aussi:
 https://www.inkyvoxel.com/wi-fi-deauthentication-attacks-using-aireplay-ng/
 
