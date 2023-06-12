@@ -9,7 +9,7 @@ Auteurs: BACKERT Noé, BANCHET Antoine, BARA Yassmina
 1. [Introduction](#introduction)
 2. [Footprint](#reconnaissancefootprint)
    -   [Rapport Antoine Banchet (Rogue Wifi ap)](#rapport-antoine-banchet)
-   -   [Rapport Yasmina Barra (zphisher)](#rapport-yasmina-barra)
+   -   [Rapport Yassmina Bara (zphisher)](#rapport-yassmina-bara)
    -   [Rapport Noé Backert (DNS Spoofing)](#rapport-noé-backert)
 3. [Scanning Networks](#scanning-networks)
 4. [Enumeration](#enumeration)
@@ -145,7 +145,7 @@ Pour conclure, l'attaque n'est pas encore parfaite car on voit que l'Url de la f
 
 Cette attaque est très simple à mettre en place et peut être très efficace. Il est donc important de faire attention aux réseaux Wi-Fi auxquels on se connecte (ex: réseaux publics) et de vérifier que l'adresse de la page de connexion est bien celle du site officiel.
 
-# Rapport Yasmina Barra
+# Rapport Yassmina Bara
 
 ## Introduction
 Partie Social engineering 
@@ -463,5 +463,13 @@ On peut par la suite depuis n'importe quelle machine envoyer des fichers en FTP 
 ![nc](<assets/nc.png>)
 # Conclusion
 
+Ce rapport détails les différentes étapes d'un pentest. Il est important de noter que chaque pentest est différent et que les étapes peuvent varier en fonction des objectifs et des exigences spécifiques du projet. Cependant, la méthodologie générale reste la même et comprend les étapes suivantes :
+
+1. Reconnaissance : Cette phase consiste à recueillir des informations sur la cible, y compris les adresses IP, les noms de domaine, les informations WHOIS, les enregistrements DNS, les sous-domaines, les adresses e-mail, les numéros de téléphone, etc. Ces informations peuvent être obtenues à partir de sources publiques, telles que les moteurs de recherche, les réseaux sociaux, les sites web, les bases de données publiques, etc. L'objectif est de recueillir le plus d'informations possible sur la cible, ce qui permet de mieux comprendre son environnement et de planifier les étapes suivantes du pentest.
+2. Scanning : Cette phase consiste à analyser les hôtes, les ports ouverts et les services disponibles sur le réseau afin d'identifier d'éventuelles vulnérabilités et faiblesses de sécurité. L'objectif principal est de cartographier le réseau, c'est-à-dire de découvrir les hôtes actifs, d'identifier les systèmes, les adresses IP et les services qui sont accessibles depuis l'extérieur. Cela nous permet d'évaluer la surface d'attaque potentielle et de cibler les efforts sur les zones les plus sensibles.
+3. Enumeration : Cette phase consiste à extraire des informations sur les versions logicielles et les configurations des services réseau. Cela peut être fait manuellement en utilisant des outils tels que telnet ou netcat, ou en utilisant des outils automatisés tels que nmap ou metasploit. Le but est d'obtenir le plus d'information possible sur les services de la machine. Afin de rechercher les failles possibles OWASP.
+4. Gaining access : Cette phase consiste à exploiter les vulnérabilités identifiées pour obtenir un accès non autorisé au système cible. Cela peut être fait en utilisant des outils automatisés tels que metasploit ou en développant des exploits personnalisés pour exploiter les vulnérabilités spécifiques. L'objectif est d'obtenir un accès à distance au système cible, ce qui permet d'exécuter des commandes et des programmes sur le serveur.
+
+Ce rapport ne traite pas du maintient de l'accès.
 
 
