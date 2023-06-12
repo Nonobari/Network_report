@@ -9,6 +9,9 @@ Auteurs: BACKERT Noé, BANCHET Antoine, BARA Yassmina
 1. [Introduction](#introduction)
 2. [Footprint](#footprint)
 3. [Scanning Networks](#scanning-networks)
+4. [Enumeration](#enumeration)
+5. [Gaining Access](#gaining-access)
+6. [Conclusion](#conclusion)
 
 
 
@@ -339,7 +342,7 @@ Aussi avec <b>Nmap</b>:
     sudo nmap –script smb-enum-users.nse –p 445 <adresse_ip>
 Samba Server est un logiciel open source qui permet de partager des fichiers, des imprimantes et d'autres ressources entre des ordinateurs fonctionnant sous différents systèmes d'exploitation, tels que Windows, Linux et macOS, dans un réseau local. Il implémente le protocole SMB/CIFS (Server Message Block/Common Internet File System), qui est le protocole de partage de fichiers standard utilisé par les systèmes Windows.
 
-# Gainin Access
+# Gaining Access
 
 ## 1. Exploiting FTP
 Le protocole de transfert de fichiers (FTP), est un protocole réseau qui permet de transférer ou de manipuler des fichiers sur un réseau informatique.
