@@ -7,7 +7,10 @@ Auteurs: BACKERT Noé, BANCHET Antoine, BARA Yassmina
 
 # Table des matières
 1. [Introduction](#introduction)
-2. [Footprint](#footprint)
+2. [Footprint](#reconnaissancefootprint)
+   -   [Rapport Antoine Banchet (Rogue Wifi ap)](#rapport-antoine-banchet)
+   -   [Rapport Yasmina Barra (zphisher)](#rapport-yasmina-barra)
+   -   [Rapport Noé Backert (DNS Spoofing)](#rapport-noé-backert)
 3. [Scanning Networks](#scanning-networks)
 4. [Enumeration](#enumeration)
 5. [Gaining Access](#gaining-access)
@@ -66,7 +69,7 @@ Il faut retenir que plus on connait la cicble, plus on est susceptible de réuss
 
 ## 2. Social Enginnering/Phishing 
 
-<u>Report on social engineering: Phising made by Antoine Banchet</u>
+# Rapport Antoine Banchet
 
 ## Introduction
 
@@ -142,6 +145,39 @@ Pour conclure, l'attaque n'est pas encore parfaite car on voit que l'Url de la f
 
 Cette attaque est très simple à mettre en place et peut être très efficace. Il est donc important de faire attention aux réseaux Wi-Fi auxquels on se connecte (ex: réseaux publics) et de vérifier que l'adresse de la page de connexion est bien celle du site officiel.
 
+# Rapport Yasmina Barra
+
+## Introduction
+Partie Social engineering 
+Le social engineering, ou ingénierie sociale, est une technique utilisée pour manipuler psychologiquement les individus afin d'obtenir des informations confidentielles ou de les amener à effectuer des actions spécifiques. Cette méthode exploite les faiblesses humaines, telles que la confiance, la curiosité, la peur ou l'ignorance, pour tromper les personnes ciblées. 
+Concernant ce TP, on utilisera la technique phishing, il s'agit d'envoyer des e-mails ou des messages prétendant provenir d'une source fiable, telle qu'une institution financière ou une entreprise connue, afin de tromper les destinataires et de les inciter à divulguer des informations sensibles, telles que des mots de passe ou des numéros de carte de crédit. Pour réaliser ce TP, on a utilisé le framework Zphisher et l’outil intitulé Maigret.
+1.	<b>ZPhisher</b> : ZPhisher est un framework de phishing automatisé basé sur le langage de programmation Python. Il offre une gamme d'outils et de modèles préconfigurés pour mener des attaques de phishing. Il permet aux utilisateurs de créer des pages de phishing pour imiter différents sites web populaires, tels que les réseaux sociaux, les services de messagerie, les sites bancaires, etc. ZPhisher facilite la génération de liens malveillants et la capture des informations confidentielles des victimes.
+2.	<b>Maigret</b> : Maigret est un outil open source basé sur Python qui permet de collecter des informations sur une personne à partir de diverses sources en ligne. Il recherche les profils de médias sociaux, les adresses e-mail, les noms d'utilisateur et d'autres informations liées à une personne spécifique. Bien que Maigret puisse être utilisé pour recueillir des informations, il est important de souligner que l'utilisation abusive de ces données peut porter atteinte à la vie privée des individus.
+On a installé les deux outils, et on a et exécute les deux commandes suivantes:
+
+    `$ cd zphisher`
+
+    `$ bash zphisher.sh`
+
+On obtient les figures suivantes : on demande de sélectionner le site auquel appliquer le phishing, on choisit par exemple Instagram, on sélectionne le numéro correspondant au site voulu, on choisit le type du login, ceci afin de générer le lien menant à la page où la cible entrera les informations de son compte Instagram. Les figures suivantes illustrent les différentes étapes pour générer le lien à envoyer à la cible.
+
+
+![yasmin1](<assets/yasmina1.png>)
+![yasmin2](<assets/yasmina2.png>)
+![yasmin3](<assets/yasmina3.png>)
+
+
+
+ 
+ 
+
+ 
+Voici un exemple de mail envoyé à la cible, il contient le lien généré:
+
+    Nous avons constaté une opération suspecte concernant votre compte Instagram, afin de renforcer la sécurité de votre compte, vous devez vous connectez au lien ci-dessous affin d’améliorer les paramètres de sécurité: https://is_get/SudDFzj
+
+
+# Rapport Noé Backert
 
 ## 3. Countermeasures against phishing
 Pour se protéger du phishing, il est recommandé de faire preuve de prudence et de vigilance. Il est important d'être conscient des risques liés aux communications non sollicitées, telles que les emails, les messages ou les appels téléphoniques, qui peuvent chercher à obtenir des informations personnelles ou financières. Il est conseillé de vérifier attentivement l'identité de l'expéditeur en confirmant l'adresse email ou le numéro de téléphone utilisé. Il est également préférable de ne pas cliquer sur des liens suspects, qui peuvent potentiellement rediriger vers des sites web frauduleux. Pour assurer une protection adéquate, il est recommandé de ne partager des informations sensibles que lorsque l'on est certain de la légitimité de la demande. L'activation de l'authentification à deux facteurs lorsqu'elle est disponible et la mise à jour régulière des logiciels utilisés sont des mesures supplémentaires pour renforcer la sécurité en ligne. Enfin, il est bénéfique de se familiariser avec les différentes techniques de phishing afin d'être mieux préparé à les reconnaître et de partager ces connaissances avec d'autres pour les sensibiliser à ces risques potentiels.
