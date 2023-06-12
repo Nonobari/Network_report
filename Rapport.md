@@ -291,9 +291,138 @@ Dans l'ensemble, la phase d'énumération permet d'obtenir des informations pré
 ## 1. Banner Grabbing
 
 On va chercher à extraitre les bannières des services de la machine.
-- Banner grabbing using TELNET
-- Banner grabbing using NetCat
-- Banner grabbing using NMAP
-- Banner grabbing using Metasploit framework
--  Operating System detection using NMAP
+
+Le banning grabbing permet de récupérer des informations sur les versions logicielles et les configurations des services réseau. Cela peut être fait manuellement en utilisant des outils tels que telnet ou netcat, ou en utilisant des outils automatisés tels que nmap ou metasploit.
+Le but est d'obtenir le plus d'information possible sur les services de la machine. Afin de rechercher les failles possibles OWASP.
+
+On peut utiliser <b>telnet</b>. En effet Cela implique de se connecter au service Telnet du système cible et de lire le "banner" ou la bannière d'accueil, qui est généralement un message d'identification ou d'information envoyé par le serveur.
+On peut utiliser la commande suivante pour se connecter à un service Telnet :
+
+    telnet <ip_address> <port>
+On utilise le plus souvent le port 23.
+
+On peut aussi utiliser <b>netcat</b>:
+
+    nc <ip_address> 80
+On utilise le port 80 pour aller chercher les informations sur les ports web HTTP. On peut aussi chercher des bannières sur des services FTP.
+
+<b>Nmap</b> est souvent utilisé pour trouver la version et l'OS de la machine avec des commandes de bases:
+    
+    nmap -O <adresse_ip>
+On peut aussi utiliser des scripts nmap plus complets déjà installés:
+    
+    nmap -sV -script=banner <adresse_ip>
+
+<b>Metasploit</b> contient l'ensemble des fonctionnalités citées précedemment. On peut utiliser la commande suivante pour scanner un service Telnet avec la commande suivante :
+
+    use auxiliary/scanner/telnet/telnet_version
+ou encore: 
+    
+        use auxiliary/scanner/http/http_version
+
+## 2. OS Enumeration
+
+Comme mentionné précedemment, l'une des fonctionnalités les plus connues de Nmap est la détection à distance de l'OS en utilisant l'empreinte du stack TCP/IP. Nmap envoie une série de paquets TCP et UDP à l'hôte distant et examine pratiquement chaque bit des réponses. Après avoir effectué des dizaines de tests tels que l'échantillonnage TCP, le support et l'ordre des options TCP, l'échantillonnage de l'ID IP et la vérification de la taille initiale de la fenêtre, Nmap compare les résultats à sa base de données nmap-os-db comprenant plus de 2600 empreintes d'OS connues et affiche les détails de l'OS s'il y a correspondance. Chaque empreinte comprend une description textuelle libre de l'OS et une classification qui fournit le nom du fabricant (par exemple, Sun), le système d'exploitation sous-jacent (par exemple, Solaris), la génération de l'OS (par exemple, 10) et le type de dispositif (usage général, routeur, commutateur, console de jeu, etc.). La plupart des empreintes ont également une représentation Common Platform Enumeration (CPE), telle que cpe:/o:linux:linux_kernel:2.6.
+
+Nmap utilise une technique de détection d'OS basée sur l'analyse approfondie des réponses aux paquets envoyés à l'hôte distant. Il compare ensuite ces réponses à une base de données d'empreintes d'OS connues pour déterminer l'OS probable du système cible. Chaque empreinte comprend des informations détaillées sur l'OS, y compris le fabricant, le système d'exploitation sous-jacent, la génération de l'OS et le type de dispositif.
+
+    nmap -O <adresse_ip>
+## 3. User Enumeration
+
+L'énumération des utilisateurs est une étape essentielle dans tout test de pénétration. Elle permet au testeur de découvrir quels utilisateurs ont accès au serveur et quels utilisateurs sont présents sur le réseau. L'énumération des utilisateurs est également utilisée pour tenter d'accéder à la machine en utilisant des techniques de force brute. Une fois que le testeur connaît le nom d'utilisateur, il ne reste plus qu'à essayer de deviner le mot de passe par force brute.
+
+On peut faire de l'énumération avec <b>Enum4linux</b>.
+    
+    enum4linux -a <adresse_ip>
+Aussi avec <b>Nmap</b>:
+
+    sudo nmap –script smb-enum-users.nse –p 445 <adresse_ip>
+Samba Server est un logiciel open source qui permet de partager des fichiers, des imprimantes et d'autres ressources entre des ordinateurs fonctionnant sous différents systèmes d'exploitation, tels que Windows, Linux et macOS, dans un réseau local. Il implémente le protocole SMB/CIFS (Server Message Block/Common Internet File System), qui est le protocole de partage de fichiers standard utilisé par les systèmes Windows.
+
+# Gainin Access
+
+## 1. Exploiting FTP
+Le protocole de transfert de fichiers (FTP), est un protocole réseau qui permet de transférer ou de manipuler des fichiers sur un réseau informatique.
+
+Le FTP est utilisé pour faciliter l'échange de fichiers entre un client et un serveur. Il permet au client d'envoyer des fichiers vers le serveur ou de les récupérer à partir de celui-ci. Le protocole FTP offre également des fonctionnalités permettant de créer, supprimer, renommer et déplacer des fichiers et des répertoires.
+
+FTP est un protocole non sécurisé, ce qui signifie que les données, y compris les identifiants de connexion et les fichiers transférés, sont transmis en clair sur le réseau. Pour des raisons de sécurité, il est recommandé d'utiliser des protocoles de transfert de fichiers sécurisés, tels que SFTP (SSH File Transfer Protocol) ou FTPS (FTP sécurisé), qui utilisent des méthodes de chiffrement pour protéger les données transitant sur le réseau.
+
+Dans notre exemple de cours, la machine exploitable VISMIN possède <u>une backdoor</u>.
+![Backdoor](<assets/backdoor.png>)
+En effet, en se connectant avec telnet au port 21 avec un user finissant par un smiley, cela ouvre le port 6200.
+![6200](<assets/6200.png>)
+On peut ensuite se connecter avec telnet au port 6200 et obtenir un shell en étant root.
+![6200_root](<assets/6200_root.png>)
+
+On peut aussi utiliser metasploit pour exploiter cette faille.
+![6200_msf](<assets/6200_msf.png>)
+
+On peut aussi tout simplement <u>brutforcer</u> avec <b>Hydra</b> le mot de passe de l'utilisateur ftp.
+On utilise un dictionnaire de mots de passes et un dictionnaire de users.
+On obtient :
+
+USER = user
+
+PASS = user
+![ftp_login](<assets/ftp_login.png>)
+
+## 2. Exploiting SSH
+
+Pour exploiter le SSH on peut aussi utiliser Hydra. On peut aussi utiliser metasploit.
+
+Rajouter ce qu'on trouve)()
+
+## 3. Netbios-SSN (port 139)
+Le Network Basic Input/Output System (NetBIOS) fournit des services liés à la couche de session du modèle OSI, permettant aux applications sur des ordinateurs distincts de communiquer via un réseau local.
+
+NetBIOS facilite la communication entre les ordinateurs au sein d'un réseau en fournissant des fonctionnalités telles que l'identification des noms d'ordinateurs, la résolution des noms d'hôtes en adresses IP, la gestion des sessions et la transmission de données entre les applications.
+
+En utilisant NetBIOS, les applications peuvent établir des connexions et échanger des informations sur un réseau local, permettant ainsi le partage de fichiers, d'imprimantes et d'autres ressources entre les ordinateurs.
+
+Il est important de noter que NetBIOS est une technologie plus ancienne et a été largement remplacée par des protocoles plus modernes tels que TCP/IP. Cependant, il est toujours utilisé dans certains environnements, en particulier dans les réseaux locaux hérités et les systèmes d'exploitation plus anciens.
+
+![samba_msf](<assets/samba_msf.png>)
+
+## 4. Java-RMI (port 1099)
+
+Le RMI (Remote Method Invocation) est une API qui fournit un mécanisme pour créer des applications distribuées en Java. Le RMI permet à un objet d'appeler des méthodes sur un objet s'exécutant dans une autre machine virtuelle Java (JVM).
+
+Grâce au RMI, les développeurs peuvent créer des applications distribuées où les objets peuvent interagir et communiquer entre différentes JVM. Cela permet d'exploiter la puissance du parallélisme et de la répartition des tâches sur un réseau.
+
+Lorsqu'un objet utilise le RMI pour invoquer des méthodes sur un objet distant, le RMI prend en charge la sérialisation et la désérialisation des paramètres et des résultats pour la transmission sur le réseau. Il facilite également la gestion des connexions et des transactions entre les objets distants.
+
+Le RMI est largement utilisé dans le développement d'applications distribuées en Java, notamment dans les systèmes répartis, les serveurs d'applications et les services web.
+![java-rmi](<assets/java-rmi.png>)
+
+## 5. BINDSHELL (port 1524)
+
+Une "bind shell" est un type de shell dans lequel la machine cible ouvre un port de communication ou un écouteur sur la machine victime et attend une connexion entrante. L'attaquant se connecte ensuite à l'écouteur de la machine victime, ce qui permet l'exécution de code ou de commandes sur le serveur.
+
+Une "bind shell" permet à un attaquant d'établir un accès distant à un système compromis en ouvrant un port d'écoute sur la machine victime. Lorsque l'attaquant se connecte à ce port, il obtient un shell avec des privilèges d'exécution sur le serveur compromis. Cela lui permet d'exécuter des commandes, de télécharger ou de charger des fichiers malveillants, d'explorer le système et d'effectuer diverses activités malveillantes.
+![bindshell](<assets/bindshell.png>)
+
+## 6. PostgreSQL (port 5432)
+PostgreSQL est un système de gestion de base de données relationnelle avancé, de classe entreprise et open-source. PostgreSQL prend en charge à la fois les requêtes SQL (relationnelles) et JSON (non relationnelles). PostgreSQL est utilisé comme base de données principale pour de nombreuses applications web, ainsi que des applications mobiles et d'analyse.
+
+
+![postgresql](<assets/postgresql.png>)
+
+## 7. TOMCAT (port 8180)
+Apache Tomcat (ou simplement Tomcat) est un serveur web et un conteneur de servlet open source développé par la fondation Apache Software Foundation (ASF). Tomcat implémente les spécifications Java Servlet et JavaServer Pages (JSP) d'Oracle, et fournit un environnement de serveur web HTTP "pure Java" pour exécuter du code Java. Dans la configuration la plus simple, Tomcat s'exécute dans un seul processus du système d'exploitation. Ce processus exécute une machine virtuelle Java (JVM). Chaque requête HTTP individuelle provenant d'un navigateur vers Tomcat est traitée dans le processus Tomcat dans un thread séparé.
+![tomcat](<assets/tomcat.png>)
+
+## 8. rlogin
+
+Le rlogin (remote login) est un protocole réseau qui permet à un utilisateur distant d'accéder à un ordinateur sur un réseau et d'interagir avec celui-ci comme s'il était directement connecté à l'ordinateur local. Le rlogin est utilisé pour établir une connexion distante entre deux systèmes Unix, généralement sur un réseau local.
+
+C'est la première faille que nous avons trouvé et notre préférée car elle permet une connexion parfaite en root à la machine.
+![rlogin](<assets/rlogin.png>)
+
+On peut par la suite depuis n'importe quelle machine envoyer des fichers en FTP sur VISMIN.
+
+![nc](<assets/nc.png>)
+# Conclusion
+
+
 
