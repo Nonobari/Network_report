@@ -9,5 +9,17 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Email, InputRequired, Length, ValidationError
 
-
-# to be implemented
+class hydraForm(FlaskForm):
+    loginPath = StringField(validators=[
+        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "loginPath"})
+    
+    passPath = StringField(validators=[
+        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "passPath"})
+    
+    host = StringField(validators=[
+        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "host"})
+    
+    service = StringField(validators=[
+        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "service"})
+    
+    submit = SubmitField('Submit')

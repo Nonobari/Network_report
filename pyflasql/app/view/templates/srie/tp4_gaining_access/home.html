@@ -8,15 +8,20 @@ License: check the LICENSE file.
 {% block content %}
 <div class="container p-5 my-5">
     <!-- Main Title -->
+    <style>
+        p {
+          text-align: justify;
+        }
+      </style>
     <h1 class="text-center">SRIE > TP4 - Gaining Access</h2>
     <div class="container p-5 my-5 border">
         <!-- Description -->
         <p class="lead">
-            Description text. Description text. Description text. Description text.
+            The gaining access phase, also known as intrusion, is one of the key stages in a penetration test. It involves exploiting identified vulnerabilities in the target system to obtain unauthorized access. This step requires a deep understanding of the technologies, protocols, and tools used by the target. Penetration testers employ various techniques such as software exploits, input parameter manipulation, identity impersonation, social engineering, and other context-specific methods. The main objective of this phase is to achieve a successful compromise of the system, gaining elevated privileges or establishing a persistent presence for further activities. It is essential to document each step and adhere to ethical boundaries to ensure the integrity of the penetration testing process.
         </p>
                 
         <p class="lead">
-            Description text. Description text. Description text. Description text. 
+            Once access has been gained, the next steps in the penetration testing process involve further exploration and exploitation of the compromised system. This may include escalating privileges, pivoting to other systems within the network, and conducting lateral movement to gather more information and access additional resources. The goal is to maximize the impact of the intrusion by expanding the attacker's control and potential damage. During this phase, the pentester may employ advanced techniques like post-exploitation frameworks, command-and-control infrastructure setup, and persistence mechanisms to maintain access even after detection or system reboot. Additionally, it is crucial to carefully document all actions taken during this phase, as it provides valuable insights into the vulnerabilities, weaknesses, and potential countermeasures that need to be addressed. Effective communication with the client throughout this process ensures transparency, facilitates understanding of the security risks, and supports the development of effective remediation strategies.
         </p>
     </div>
 
@@ -30,33 +35,11 @@ License: check the LICENSE file.
         
         <ol class="list-group">
             <li class="list-group-item">
-                <h5><a href="#" class="list-group-item-action">Tool 1</a></h5>
+                <h5><a href="{{url_for('blueprint.srie_tp4_hydra')}}" class="list-group-item-action">hydra</a></h5>
                 <p class="lead">
-                    Description text. Description text. Description text. Description text.
-                </p>
-            </li>
-            <li class="list-group-item">
-                <h5><a href="#" class="list-group-item-action">Tool 2</a></h5>
-                <p class="lead">
-                    Description text. Description text. Description text. Description text.
-                </p>
-            </li>
-            <li class="list-group-item">
-                <h5><a href="#" class="list-group-item-action">Tool 3</a></h5>
-                <p class="lead">
-                    Description text. Description text. Description text. Description text.
-                </p>
-            </li>
-            <li class="list-group-item">
-                <h5><a href="#" class="list-group-item-action">Tool 4</a></h5>
-                <p class="lead">
-                    Description text. Description text. Description text. Description text.
-                </p>
-            </li>
-            <li class="list-group-item">
-                <h5><a href="#" class="list-group-item-action">Tool 5</a></h5>
-                <p class="lead">
-                    Description text. Description text. Description text. Description text.
+                    Hydra is a very fast network logon cracker which supports many different services. Hydra is a parallelized login cracker which supports numerous protocols to attack. New modules are easy to add, beside that, it is flexible and very fast.
+                    This tool gives researchers and security consultants the possibility to show how easy it would be to gain unauthorized access from remote to a system.
+             
                 </p>
             </li>
         </ol>

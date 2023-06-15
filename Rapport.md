@@ -1,3 +1,9 @@
+ <style>
+    p {
+      text-align: justify;
+    }
+  </style>
+
 Rapport
 Introduction à la cybersécurité
 ==============
@@ -44,9 +50,9 @@ Des outils github tels que [Holehe](https://github.com/megadose/holehe/) ou [She
 
 Sherlock permet de rechercher un pseudos sur des centaines de réseaux sociaux.
 
-Holehe est un outil qui permet de vérifier si une adresse email est associée à un compte sur différents sites tels que Twitter, Instagram, Imgur et plus de 120 autres plateformes. Il s'agit d'un outil de recherche d'informations qui peut être utilisé pour identifier les comptes enregistrés liés à une adresse email spécifique. Cet outil est implémenter dans notre framework.
+Holehe est un outil qui permet de vérifier si une adresse email est associée à un compte sur différents sites tels que Twitter, Instagram, Imgur et plus de 120 autres plateformes. Cet outil est implémenter dans notre framework.
 
-Les sites webes contiennent aussi des documents très intéressants (pdf, excel etc ) qui peut être intéressant de récuper avec metagoofil. Metagoofil est un outil qui permet de récupérer des informations sur un site web (ex: les adresses mail des personnes qui ont travaillé sur le site, les documents pdf, les images, ...) et de les télécharger.
+Les sites webs contiennent aussi des documents très intéressants (pdf, excel etc ) qui peut être intéressant de récuper avec metagoofil. Metagoofil est un outil qui permet de récupérer des informations sur un site web (ex: les adresses mail des personnes qui ont travaillé sur le site, les documents pdf, les images, ...) et de les télécharger.
 
 Ensuite, il faut receuillir des informations plus techniques. On s'interesse au nom de domaine avec l'outil WHOIS qui permet d'obtenir beauocup d'information sur celui-ci.
 De même TheHarvester va aller chercher les sous domaines d'un site web, les emails adresses liés à celui ci, etc..
@@ -74,30 +80,14 @@ Il faut retenir que plus on connait la cicble, plus on est susceptible de réuss
 Cette section est individuelle et a pour but de présenter le phishing et ses différentes formes.
 
 La cible durant cette section est Noé Backert, dont j'ai obtenu son autorisation préalable.
-#### a. Phishing
 
-Le phishing est une forme de cyberattaque qui peut être utilisée pour voler des données sensibles, notamment des informations de connexion et des détails de carte de crédit. Il se produit lorsqu'un attaquant, se faisant passer pour une entité de confiance, vous incite à cliquer sur un lien ou à ouvrir une pièce jointe dans un courrier électronique ou un message. Cela peut également se produire via un appel téléphonique ou un message texte. Les attaques de phishing peuvent être utilisées pour voler des informations personnelles, telles que des noms d'utilisateur, des mots de passe et des détails de carte de crédit, ou pour distribuer des logiciels malveillants.
-
-#### b. Méthodologie
-
-Généralement, le phishing se déroule en plusieurs étapes :
-
-1. L'attaquant doit d'abord choisir sa cible et obtenir des informations sur elle. Cela peut se faire, par exemple, en utilisant les réseaux sociaux ou en utilisant des techniques de social engineering pour obtenir des informations sur la cible (OSINT).
-
-2. L'attaquant doit ensuite choisir la forme de phishing qu'il va utiliser. Il peut s'agir d'un e-mail, d'un message texte, d'un appel téléphonique, d'un message sur les réseaux sociaux, etc.
-
-3. L'attaquant doit ensuite créer le message de phishing. Celui-ci doit être crédible et inciter la cible à effectuer une action, comme cliquer sur un lien ou ouvrir une pièce jointe.
-
-4. L'attaquant doit ensuite envoyer le message de phishing à la cible. Une fois que la cible a effectué l'action demandée, l'attaquant peut alors obtenir les informations qu'il souhaite. La plupart du temps, le lien de phishing renvoie vers une fausse page de connexion qui enregistre les identifiants de la cible, installe un logiciel malveillant sur la machine ou enregistre les informations de carte bancaire.
-
-
-#### c. Cas pratique
+#### a. Cas pratique
 
 Le cas pratique le plus courant consiste à créer un mail de phishing. Pour cela, on peut utiliser des outils tels que [GoPhish](https://getgophish.com/), qui permettent de créer des mails de phishing et de suivre les personnes qui ont cliqué sur le lien ou ouvert la pièce jointe. Cet outil est principalement utilisé pour mener des campagnes de phishing. On peut également utiliser Social Engineering Toolkit (SET) pour cibler une personne spécifique. Cet outil permet de créer directement un mail de phishing et de l'envoyer à la cible. Il est également possible de cloner directement un site.
 
 Cependant, j'ai décidé d'utiliser une technique appelée "Rogue Wi-Fi Access Point Attack" en utilisant le framework "Wifipumpkin3". Ce framework permet de créer un point d'accès Wi-Fi et de cloner un site. Ainsi, lorsque la cible se connecte au point d'accès, elle est redirigée vers le site cloné. On peut alors récupérer les identifiants de la cible. Vous pouvez trouver le framework "Wifipumpkin3" sur GitHub à l'adresse suivante : [https://github.com/P0cL4bs/wifipumpkin3](https://github.com/P0cL4bs/wifipumpkin3).
 
-#### d. Explication de la méthode utilisée
+#### b. Explication de la méthode utilisée
 
 Sur le réseau de notre résidence étudiante, après s'être connecté au réseau Wi-Fi, nous devons nous identifier avec nos identifiants étudiants pour pouvoir accéder à Internet. Ainsi, j'ai décidé de créer un point d'accès Wi-Fi avec le même nom que le réseau Wi-Fi de la résidence étudiante et de cloner la page de connexion. Ainsi, lorsque la cible se connecte au point d'accès, elle est redirigée vers la page de connexion clonée.
 
@@ -129,7 +119,7 @@ On pourrait déconnecter de manière répétée les utilisateurs du réseau Wi-F
 On peut utiliser aireplay-ng pour le faire aussi:
 https://www.inkyvoxel.com/wi-fi-deauthentication-attacks-using-aireplay-ng/
 
-#### e. Du point de vue de la victime
+#### c. Du point de vue de la victime
 
 1. Noé se connecte au réseau Wi-Fi de la résidence étudiante. 
 2. Il voit que le réseau est bien celui de la résidence étudiante, et qu'il est sécurisé. Il se connecte donc au réseau Wi-Fi.
@@ -138,7 +128,7 @@ https://www.inkyvoxel.com/wi-fi-deauthentication-attacks-using-aireplay-ng/
 <img src = "assets/fake_portal.png" width = 500>
 4. il navigue ensuite sur Internet normalement sans rien remarquer. J'ai en plus accès à tout ce qu'il consulte et qui est visible en clair.
    
-#### f. Conclusion
+#### d. Conclusion
 Pour conclure, l'attaque n'est pas encore parfaite car on voit que l'Url de la fausse page de connexion affiche 10.0.0.1 qui est l'adresse du routeur et non pas l'adresse de la page de connexion de la résidence étudiante. Il faudrait donc trouver un moyen de changer l'Url de la page de connexion. En configurant le DNS du point d'accès on pourrait peut être y arriver.
 
 Cette attaque est très simple à mettre en place et peut être très efficace. Il est donc important de faire attention aux réseaux Wi-Fi auxquels on se connecte (ex: réseaux publics) et de vérifier que l'adresse de la page de connexion est bien celle du site officiel.
@@ -163,11 +153,6 @@ On obtient les figures suivantes : on demande de sélectionner le site auquel ap
 ![yasmin1](<assets/yasmina1.png>)
 ![yasmin2](<assets/yasmina2.png>)
 ![yasmin3](<assets/yasmina3.png>)
-
-
-
- 
- 
 
  
 Voici un exemple de mail envoyé à la cible, il contient le lien généré:
@@ -237,17 +222,11 @@ L'objectif principal du "network scan" est de cartographier le réseau, c'est-à
 En effectuant un "network scan", nous pouvons détecter les ports ouverts, les services mal configurés, les versions de logiciels obsolètes et les éventuelles vulnérabilités connues. Ces informations sont ensuite utilisées pour planifier et exécuter des tests de sécurité plus approfondis, tels que des scans de vulnérabilités ou des attaques ciblées.
 
 <u>Méthodologie</u>
-On commence par chercher notre addresse IP à l'aide de la commande : 
-
-    ifconfig
-
-![pictureNmapPing](assets/ifconfig.png)
-
 Pour effectuer un scan basique d'un réseau, on peut utiliser la commande suivante : 
 
     fping -s -g 192.168.137.0 192.168.137.254
 
-Celle-ci nous permet d'envoyer une requête et d'attendre un retour sur l'ensemble des adresses IP du sous-réseau indiqué.
+Celle-ci nous permet d'envoyer une requête et d'attendre un retour sur l'ensemble des adresses IP du sous-réseau indiqué (ici 192.168.137/24).
 
 ![pictureNmapPing](assets/fping1.png)
 ![pictureNmapPing](assets/fping2.png)
@@ -325,20 +304,15 @@ La phase de scan de vulnérabilité est une étape cruciale car elle permet d'id
 Durant le cours, nous utilisons une machine virtuelle VISMIN qui présente des failles de sécuritées.
 Il faut dans l'ordre:
 
-1. Identification des vulnérabilités : Le scan de vulnérabilité permet de découvrir les faiblesses de sécurité potentielles dans les systèmes ciblés. Cela inclut les vulnérabilités connues, les configurations incorrectes, les versions obsolètes de logiciels, les paramètres de sécurité faibles, etc. En identifiant ces vulnérabilités, nous pouvons évaluer le niveau de risque associé et recommander des mesures correctives pour les atténuer.
+1. Identification des vulnérabilités : Le scan de vulnérabilité permet de découvrir les faiblesses de sécurité potentielles dans les systèmes ciblés. 
 
-2. Priorisation des actions : Le scan de vulnérabilité fournit des informations quantitatives et qualitatives sur les vulnérabilités détectées. Cela permet de classer les vulnérabilités en fonction de leur criticité et de leur impact potentiel sur la sécurité. Cette priorisation aide les organisations à se concentrer sur les vulnérabilités les plus importantes, en leur permettant de hiérarchiser les efforts de remédiation et d'atténuation.
+2. Priorisation des actions : Le scan de vulnérabilité fournit des informations quantitatives et qualitatives sur les vulnérabilités détectées. Cela permet de classer les vulnérabilités en fonction de leur criticité et de leur impact potentiel sur la sécurité. 
 
-3. Conformité aux normes : Le scan de vulnérabilité peut aider les organisations à se conformer à des normes et des réglementations de sécurité spécifiques. En identifiant et en remédiant aux vulnérabilités, les entreprises peuvent répondre aux exigences de conformité et démontrer leurs efforts pour protéger les données sensibles et maintenir un niveau de sécurité adéquat.
+3. Conformité aux normes : Le scan de vulnérabilité peut aider les organisations à se conformer à des normes et des réglementations de sécurité spécifiques. 
 Il faut pour chaque vulnérabilitées se référencer à sa catégorie OWASP.
-OWASP (Open Web Application Security Project) est une communauté mondiale dédiée à l'amélioration de la sécurité des applications web à travers l'éducation, la sensibilisation et le développement de bonnes pratiques.
+OWASP (Open Web Application Security Project) est une communauté mondiale dédiée à l'amélioration de la sécurité des applications web.
 
-4. Sensibilisation à la sécurité : La phase de scan de vulnérabilité permet de sensibiliser les parties prenantes à l'importance de la sécurité des systèmes et des données. Les rapports de scan mettent en évidence les risques et les vulnérabilités spécifiques, fournissant des preuves tangibles des faiblesses existantes. Cela peut aider à justifier les investissements en matière de sécurité et à promouvoir une culture de la sécurité au sein de l'organisation.
-
-En résumé, la phase de scan de vulnérabilité dans un pentest est essentielle pour découvrir, évaluer et hiérarchiser les vulnérabilités présentes dans les systèmes testés. Cela permet de prendre des mesures appropriées pour renforcer la sécurité et réduire les risques potentiels pour les systèmes et les données sensibles.
-
-Remarque: Cette liste d'action provient d'une documentation utilisé pendant le stage de premier année d'Antoine Banchet dans une entreprise de cybersécurité, ITS EUGENA.
-
+4. Sensibilisation à la sécurité : La phase de scan de vulnérabilité permet de sensibiliser les parties prenantes.
 <u>Méthodologie</u>
 
 Pour réaliser un scan de vulnérabilité:
@@ -351,21 +325,17 @@ automatisés tels que Nessus ou OpenVAS facilite beaucoup la chose.
 
 Lorsqu'on découvre des vulnérabilités lors de la phase de scan de vulnérabilité, il est essentiel de suivre un processus structuré pour leur gestion :
 
-1. Documentation : Les vulnérabilités doivent être soigneusement documentées, en fournissant des détails précis tels que la description, l'emplacement, l'impact potentiel et les preuves de l'existence de la vulnérabilité. Cela permet de partager des informations claires avec les parties prenantes concernées.
+1. Documentation : Les vulnérabilités doivent être soigneusement documentées, en fournissant des détails précis tels que la description, l'emplacement, l'impact potentiel et les preuves de l'existence de la vulnérabilité. 
+   
+2. Évaluation de l'impact : Il est important d'évaluer l'impact réel des vulnérabilités identifiées. 
 
-2. Évaluation de l'impact : Il est important d'évaluer l'impact réel des vulnérabilités identifiées. Cela implique de comprendre comment elles pourraient être exploitées et les conséquences potentielles en termes de sécurité et d'intégrité des données.
+3. Priorisation : Les vulnérabilités doivent être classées en fonction de leur criticité, de leur exploitabilité et de leur impact potentiel. 
+   
+4. Recommandations de correction : Il faut fournir des recommandations claires et précises pour corriger les vulnérabilités identifiées. 
 
-3. Priorisation : Les vulnérabilités doivent être classées en fonction de leur criticité, de leur exploitabilité et de leur impact potentiel. Cela permet de déterminer quelles vulnérabilités doivent être traitées en premier en fonction des risques qu'elles représentent pour le système ou l'application.
+5. Rapport : Les résultats de l'analyse des vulnérabilités doivent être communiqués aux parties prenantes concernées, généralement sous forme de rapport détaillé.
 
-4. Recommandations de correction : Il faut fournir des recommandations claires et précises pour corriger les vulnérabilités identifiées. Cela peut inclure des correctifs de configuration, des mises à jour de logiciels, des changements dans les pratiques de développement ou d'autres mesures de sécurité appropriées.
-
-5. Rapport : Les résultats de l'analyse des vulnérabilités doivent être communiqués aux parties prenantes concernées, généralement sous forme de rapport détaillé. Ce rapport doit inclure une description des vulnérabilités, leur impact potentiel, les recommandations de correction et, si possible, des captures d'écran ou des preuves supplémentaires.
-
-6. Suivi et vérification : Une fois les vulnérabilités corrigées, il est important de vérifier leur résolution effective. Les pentesters peuvent effectuer des tests supplémentaires pour confirmer que les vulnérabilités ont été traitées correctement et que le système ou l'application est désormais sécurisé.
-
-Il est essentiel de noter que tout le processus de traitement des vulnérabilités doit être effectué en collaboration étroite avec les parties prenantes et en respectant les politiques et les procédures internes de l'organisation.
-
-Remarque: Cette liste d'action provient d'une documentation utilisé pendant le stage de premier année d'Antoine Banchet dans une entreprise de cybersécurité, ITS EUGENA.
+6. Suivi et vérification : Une fois les vulnérabilités corrigées, il est important de vérifier leur résolution effective. 
 
 # Enumeration
 En plus de simplement rechercher les vulnérabilités d'une machine, on peut chercher à les exploiter.
@@ -407,9 +377,8 @@ ou encore:
 
 ## 2. OS Enumeration
 
-Comme mentionné précedemment, l'une des fonctionnalités les plus connues de Nmap est la détection à distance de l'OS en utilisant l'empreinte du stack TCP/IP. Nmap envoie une série de paquets TCP et UDP à l'hôte distant et examine pratiquement chaque bit des réponses. Après avoir effectué des dizaines de tests tels que l'échantillonnage TCP, le support et l'ordre des options TCP, l'échantillonnage de l'ID IP et la vérification de la taille initiale de la fenêtre, Nmap compare les résultats à sa base de données nmap-os-db comprenant plus de 2600 empreintes d'OS connues et affiche les détails de l'OS s'il y a correspondance. Chaque empreinte comprend une description textuelle libre de l'OS et une classification qui fournit le nom du fabricant (par exemple, Sun), le système d'exploitation sous-jacent (par exemple, Solaris), la génération de l'OS (par exemple, 10) et le type de dispositif (usage général, routeur, commutateur, console de jeu, etc.). La plupart des empreintes ont également une représentation Common Platform Enumeration (CPE), telle que cpe:/o:linux:linux_kernel:2.6.
+Nmap possède une fonctionnalité bien connue : la détection à distance de l'OS en utilisant l'empreinte du stack TCP/IP. Il envoie une série de paquets TCP et UDP à l'hôte distant, analyse les réponses bit par bit et les compare à sa base de données nmap-os-db, qui contient plus de 2600 empreintes d'OS connues. Si une correspondance est trouvée, Nmap affiche les détails de l'OS, tels que le fabricant (par exemple, Sun), le système d'exploitation (par exemple, Solaris), la génération de l'OS (par exemple, 10) et le type de dispositif (usage général, routeur, commutateur, console de jeu, etc.). Les empreintes incluent également une représentation Common Platform Enumeration (CPE) comme cpe:/o:linux:linux_kernel:2.6.
 
-Nmap utilise une technique de détection d'OS basée sur l'analyse approfondie des réponses aux paquets envoyés à l'hôte distant. Il compare ensuite ces réponses à une base de données d'empreintes d'OS connues pour déterminer l'OS probable du système cible. Chaque empreinte comprend des informations détaillées sur l'OS, y compris le fabricant, le système d'exploitation sous-jacent, la génération de l'OS et le type de dispositif.
 
     nmap -O <adresse_ip>
 ## 3. User Enumeration
@@ -462,22 +431,12 @@ Rajouter ce qu'on trouve)()
 Le Network Basic Input/Output System (NetBIOS) fournit des services liés à la couche de session du modèle OSI, permettant aux applications sur des ordinateurs distincts de communiquer via un réseau local.
 
 NetBIOS facilite la communication entre les ordinateurs au sein d'un réseau en fournissant des fonctionnalités telles que l'identification des noms d'ordinateurs, la résolution des noms d'hôtes en adresses IP, la gestion des sessions et la transmission de données entre les applications.
-
-En utilisant NetBIOS, les applications peuvent établir des connexions et échanger des informations sur un réseau local, permettant ainsi le partage de fichiers, d'imprimantes et d'autres ressources entre les ordinateurs.
-
-Il est important de noter que NetBIOS est une technologie plus ancienne et a été largement remplacée par des protocoles plus modernes tels que TCP/IP. Cependant, il est toujours utilisé dans certains environnements, en particulier dans les réseaux locaux hérités et les systèmes d'exploitation plus anciens.
-
 ![samba_msf](<assets/samba_msf.png>)
 
 ## 4. Java-RMI (port 1099)
 
 Le RMI (Remote Method Invocation) est une API qui fournit un mécanisme pour créer des applications distribuées en Java. Le RMI permet à un objet d'appeler des méthodes sur un objet s'exécutant dans une autre machine virtuelle Java (JVM).
 
-Grâce au RMI, les développeurs peuvent créer des applications distribuées où les objets peuvent interagir et communiquer entre différentes JVM. Cela permet d'exploiter la puissance du parallélisme et de la répartition des tâches sur un réseau.
-
-Lorsqu'un objet utilise le RMI pour invoquer des méthodes sur un objet distant, le RMI prend en charge la sérialisation et la désérialisation des paramètres et des résultats pour la transmission sur le réseau. Il facilite également la gestion des connexions et des transactions entre les objets distants.
-
-Le RMI est largement utilisé dans le développement d'applications distribuées en Java, notamment dans les systèmes répartis, les serveurs d'applications et les services web.
 ![java-rmi](<assets/java-rmi.png>)
 
 ## 5. BINDSHELL (port 1524)
