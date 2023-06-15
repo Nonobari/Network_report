@@ -240,6 +240,7 @@ On peut donc augmenter la taille des paquets jusqu'à obtenir une erreur de time
 ![pictureNmapPing](assets/ping10.png)
 ![pictureNmapPing](assets/ping1000000.png)
 
+
 En tâtonnant, on observe qu'il y a une erreur en envoyant un paquet au dessus de 65507 bytes. Le buffer ne doit pas accepter autant. 
 
 
@@ -367,6 +368,9 @@ On utilise le port 80 pour aller chercher les informations sur les ports web HTT
 On peut aussi utiliser des scripts nmap plus complets déjà installés:
     
     nmap -sV -script=banner <adresse_ip>
+
+![banner](assets/Nmap_banner.png)
+![banner](assets/Nmap_smb.png)
 
 <b>Metasploit</b> contient l'ensemble des fonctionnalités citées précedemment. On peut utiliser la commande suivante pour scanner un service Telnet avec la commande suivante :
 
