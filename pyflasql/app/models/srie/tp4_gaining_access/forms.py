@@ -23,3 +23,10 @@ class hydraForm(FlaskForm):
         InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "service"})
     
     submit = SubmitField('Submit')
+
+class sqlmapForm(FlaskForm):
+    
+    url = StringField(validators=[
+        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "url"})
+    
+    submit = SubmitField('Submit')

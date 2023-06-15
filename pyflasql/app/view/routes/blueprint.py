@@ -10,7 +10,7 @@ from ...controllers.controller import index, login, register, dashboard, logout,
 from ...controllers.srie.tp1_recon_footprint.controller import srie_home, srie_tp1_recon_footprint, srie_tp1_ipaddr, srie_tp1_whois, srie_tp1_theHarvester, srie_tp1_Holehe
 from ...controllers.srie.tp2_scanning_networks.controller import srie_tp2_scanning_networks, srie_tp2_pingaddr, srie_tp2_Nmap, srie_tp2_DnsRecon, srie_tp2_DnsEnum, srie_tp2_TraceRoute
 from ...controllers.srie.tp3_enumeration.controller import srie_tp3_enumeration, srie_tp3_Telnet, srie_tp3_Netcat, srie_tp3_Enum4linux
-from ...controllers.srie.tp4_gaining_access.controller import srie_tp4_gaining_access, srie_tp4_hydra
+from ...controllers.srie.tp4_gaining_access.controller import srie_tp4_gaining_access, srie_tp4_hydra, srie_tp4_sqlmap
 from ...controllers.user_profile.controller import user_profile
 from ...controllers.toolbox.controller import toolbox_home
 from ...controllers.toolbox.wtforms.controller import toolbox_wtforms_home, toolbox_wtforms_user_reg_form, toolbox_wtforms_upload_form  
@@ -61,6 +61,7 @@ blueprint.route('/srie/tp3_enumeration/Enum4linux', methods=['GET', 'POST'])(sri
 # TP4 - Gaining Access
 blueprint.route('/srie/tp4_gaining_access/home', methods=['GET', 'POST'])(srie_tp4_gaining_access)
 blueprint.route('/srie/tp4_gaining_access/hydra', methods=['GET', 'POST'])(srie_tp4_hydra)
+blueprint.route('/srie/tp4_gaining_access/sqlmap', methods=['GET', 'POST'])(srie_tp4_sqlmap)
 
 # Toolbox
 blueprint.route('/toolbox/home', methods=['GET', 'POST'])(toolbox_home)
