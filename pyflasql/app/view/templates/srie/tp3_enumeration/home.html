@@ -1,0 +1,61 @@
+<!-- 
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+-->
+{% extends "base.html" %}
+{% block title %}SRIE > TP3 - Enumeration{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">SRIE > TP3 - Enumeration</h2>
+    <div class="container p-5 my-5 border">
+        <!-- Description -->
+        <p class="lead">
+            Enumeration in cyber security is extracting a system’s valid usernames, machine names, share names, directory names, and other information. It is a key component of ethical hacking and penetration testing, as it can provide attackers with a wealth of information that can be used to exploit vulnerabilities. It can also be defined as collecting detailed information about the target systems, such as operating and network infrastructure details. Enumeration can be used in both an offensive and defensive manner.  Enumeration is one of the most important steps in ethical hacking because it gives hackers the necessary information to launch an attack. For example, hackers who want to crack passwords need to know the usernames of valid users on that system.
+        </p>
+    </div>
+
+    <!-- Useful tools title -->
+    <h2 class="mt-5 text-center">Useful tools used in this phase</h2>    
+
+    <div class="container p-5 my-5 border">
+        <p class="lead">
+            Below is a list of tools that can be used for this pentesting phase:
+        </p>
+        
+        <ol class="list-group">
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp3_Telnet')}}" class="list-group-item-action">Telnet</a></h5>
+                <p class="lead">
+                    The telnet command is a networking protocol used for establishing an interactive communication session with another host via the TELNET protocol. This protocol enables a user to access and communicate with a remote computer as if they were physically present at the remote location. 
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp3_Netcat')}}" class="list-group-item-action">Netcat</a></h5>
+                <p class="lead">
+                    Netcat is a simple Unix utility which reads and writes data across network connections using TCP or UDP protocol. It is designed to be a reliable “back-end” tool that can be used directly or easily driven by other programs and scripts. At the same time, it is a feature-rich network debugging and exploration tool, since it can create almost any kind of connection you would need and has several interesting built-in capabilities.
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp3_Enum4linux')}}" class="list-group-item-action">Enum4linux</a></h5>
+                <p class="lead">
+                    Enum4linux is used to enumerate Windows and Samba hosts. Below are the most common options used in enum4linux.
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 4</a></h5>
+                <p class="lead">
+                    Description text. Description text. Description text. Description text.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 5</a></h5>
+                <p class="lead">
+                    Description text. Description text. Description text. Description text.
+                </p>
+            </li>
+        </ol>
+    </div>
+
+</div>
+{% endblock %}
+

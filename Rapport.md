@@ -1,5 +1,4 @@
 Rapport
-\
 Introduction à la cybersécurité
 ==============
 
@@ -8,9 +7,9 @@ Auteurs: BACKERT Noé, BANCHET Antoine, BARA Yassmina
 # Table des matières
 1. [Introduction](#introduction)
 2. [Footprint](#reconnaissancefootprint)
-   -   [Rapport Antoine Banchet (Rogue Wifi ap)](#rapport-antoine-banchet)
-   -   [Rapport Yassmina Bara (zphisher)](#rapport-yassmina-bara)
-   -   [Rapport Noé Backert (DNS Spoofing)](#rapport-noé-backert)
+   -   [Rapport Antoine Banchet (Rogue Wifi ap)](#rapport-phishing-antoine-banchet)
+   -   [Rapport Yassmina Bara (zphisher)](#rapport-phishing-yassmina-bara)
+   -   [Rapport Noé Backert (DNS Spoofing)](#rapport-phishing-noé-backert)
 3. [Scanning Networks](#scanning-networks)
 4. [Enumeration](#enumeration)
 5. [Gaining Access](#gaining-access)
@@ -67,20 +66,19 @@ Le social engineering est une technique qui consiste à manipuler les gens pour 
 On peut se faire passer pour un membre de l'entreprise, réussir à rentrer dans l'entreprise et récupérer des informations sensibles, ou encore se faire passer pour un membre de la famille de la cible et récupérer des informations sensibles. Il existe de nombreuses techniques de social engineering. 
 Il faut retenir que plus on connait la cicble, plus on est susceptible de réussir.
 
-## 2. Social Enginnering/Phishing 
 
-# Rapport Antoine Banchet
+# Rapport phishing Antoine Banchet
 
 ## Introduction
 
 Cette section est individuelle et a pour but de présenter le phishing et ses différentes formes.
 
 La cible durant cette section est Noé Backert, dont j'ai obtenu son autorisation préalable.
-## I. Phishing
+#### a. Phishing
 
 Le phishing est une forme de cyberattaque qui peut être utilisée pour voler des données sensibles, notamment des informations de connexion et des détails de carte de crédit. Il se produit lorsqu'un attaquant, se faisant passer pour une entité de confiance, vous incite à cliquer sur un lien ou à ouvrir une pièce jointe dans un courrier électronique ou un message. Cela peut également se produire via un appel téléphonique ou un message texte. Les attaques de phishing peuvent être utilisées pour voler des informations personnelles, telles que des noms d'utilisateur, des mots de passe et des détails de carte de crédit, ou pour distribuer des logiciels malveillants.
 
-## II. Méthodologie
+#### b. Méthodologie
 
 Généralement, le phishing se déroule en plusieurs étapes :
 
@@ -93,13 +91,13 @@ Généralement, le phishing se déroule en plusieurs étapes :
 4. L'attaquant doit ensuite envoyer le message de phishing à la cible. Une fois que la cible a effectué l'action demandée, l'attaquant peut alors obtenir les informations qu'il souhaite. La plupart du temps, le lien de phishing renvoie vers une fausse page de connexion qui enregistre les identifiants de la cible, installe un logiciel malveillant sur la machine ou enregistre les informations de carte bancaire.
 
 
-### III. Cas pratique
+#### c. Cas pratique
 
 Le cas pratique le plus courant consiste à créer un mail de phishing. Pour cela, on peut utiliser des outils tels que [GoPhish](https://getgophish.com/), qui permettent de créer des mails de phishing et de suivre les personnes qui ont cliqué sur le lien ou ouvert la pièce jointe. Cet outil est principalement utilisé pour mener des campagnes de phishing. On peut également utiliser Social Engineering Toolkit (SET) pour cibler une personne spécifique. Cet outil permet de créer directement un mail de phishing et de l'envoyer à la cible. Il est également possible de cloner directement un site.
 
 Cependant, j'ai décidé d'utiliser une technique appelée "Rogue Wi-Fi Access Point Attack" en utilisant le framework "Wifipumpkin3". Ce framework permet de créer un point d'accès Wi-Fi et de cloner un site. Ainsi, lorsque la cible se connecte au point d'accès, elle est redirigée vers le site cloné. On peut alors récupérer les identifiants de la cible. Vous pouvez trouver le framework "Wifipumpkin3" sur GitHub à l'adresse suivante : [https://github.com/P0cL4bs/wifipumpkin3](https://github.com/P0cL4bs/wifipumpkin3).
 
-### IV. Explication de la méthode utilisée
+#### d. Explication de la méthode utilisée
 
 Sur le réseau de notre résidence étudiante, après s'être connecté au réseau Wi-Fi, nous devons nous identifier avec nos identifiants étudiants pour pouvoir accéder à Internet. Ainsi, j'ai décidé de créer un point d'accès Wi-Fi avec le même nom que le réseau Wi-Fi de la résidence étudiante et de cloner la page de connexion. Ainsi, lorsque la cible se connecte au point d'accès, elle est redirigée vers la page de connexion clonée.
 
@@ -131,7 +129,7 @@ On pourrait déconnecter de manière répétée les utilisateurs du réseau Wi-F
 On peut utiliser aireplay-ng pour le faire aussi:
 https://www.inkyvoxel.com/wi-fi-deauthentication-attacks-using-aireplay-ng/
 
-### V. Du point de vue de la victime
+#### e. Du point de vue de la victime
 
 1. Noé se connecte au réseau Wi-Fi de la résidence étudiante. 
 2. Il voit que le réseau est bien celui de la résidence étudiante, et qu'il est sécurisé. Il se connecte donc au réseau Wi-Fi.
@@ -140,12 +138,12 @@ https://www.inkyvoxel.com/wi-fi-deauthentication-attacks-using-aireplay-ng/
 <img src = "assets/fake_portal.png" width = 500>
 4. il navigue ensuite sur Internet normalement sans rien remarquer. J'ai en plus accès à tout ce qu'il consulte et qui est visible en clair.
    
-### VI. Conclusion
+#### f. Conclusion
 Pour conclure, l'attaque n'est pas encore parfaite car on voit que l'Url de la fausse page de connexion affiche 10.0.0.1 qui est l'adresse du routeur et non pas l'adresse de la page de connexion de la résidence étudiante. Il faudrait donc trouver un moyen de changer l'Url de la page de connexion. En configurant le DNS du point d'accès on pourrait peut être y arriver.
 
 Cette attaque est très simple à mettre en place et peut être très efficace. Il est donc important de faire attention aux réseaux Wi-Fi auxquels on se connecte (ex: réseaux publics) et de vérifier que l'adresse de la page de connexion est bien celle du site officiel.
 
-# Rapport Yassmina Bara
+# Rapport phishing Yassmina Bara
 
 ## Introduction
 Partie Social engineering 
@@ -177,7 +175,55 @@ Voici un exemple de mail envoyé à la cible, il contient le lien généré:
     Nous avons constaté une opération suspecte concernant votre compte Instagram, afin de renforcer la sécurité de votre compte, vous devez vous connectez au lien ci-dessous affin d’améliorer les paramètres de sécurité: https://is_get/SudDFzj
 
 
-# Rapport Noé Backert
+# Rapport phishing Noé Backert
+
+ Afin de cloner un site web, on peut utiliser les outils natifs de Kali Linux avec l'outil : "social engineering toolkit"
+
+    sudo setoolkit
+
+![setoolkit](assets/setoolkit.png)
+
+Dans le menu, on choisit alors
+- 1\) Social-Engineering Attacks 
+- 2\) Website Attack Vectors
+- 3\) Credential Harvester Attack Method
+- 2\) Site Cloner
+
+On nous demande ensuite d'entrer l'addresse IP sur laquelle on veut récupérer les requêtes. On peut donc appuyer sur entrée pour laisser notre addresse IP locale.
+
+On veut cloner le site d'authentification de l'école dans le but de récolter les identifiants et les mots de passe des utilisateurs de l'école.
+
+On clone donc le site d'authentification de l'école : https://cas.emse.fr
+
+![credHarvester](assets/credHarvester.png)
+
+Désormais, on peut écouter sur le terminal les requêtes, et notamment les identifiants qui arrivent sur notre addresse IP sur le port http.
+
+>Seulement, comment faire pour que les personnes attaquées y accèdent ? 
+
+1. La première solution utilisée la plupart du temps est d'héberger ce clone sur une autre adresse IP publique et de l'utiliser pour enregistrer les données sensibles
+
+2. Dans le cadre d'un réseau privé, nous avons testé une autre solution: Le **DNS Spoofing**
+
+Pour cela, nous avons utilisé un autre outil de Kali Linux : Ettercap
+
+Cette attaque consiste à se mettre entre le routeur et le serveur DNS pour intercepter les requêtes DNS et en filtrer certaines pour les diriger vers les adresses IP voulues (ici notre addresse IP).
+
+![ettercap](assets/ettercap.png)
+
+On modifie la configuration du logiciel afin de dérouter les connexions de cas.emse.fr vers notre adresse IP :
+
+Pour cela, on modifie le fichier situé dans /etc/ettercap/etter.dns
+
+On ajoute les lignes suivantes :
+
+    cas.emse.fr 		A 	10.163.96.137
+    cas.emse.fr/login 	A 	10.163.96.137
+    *.emse.fr 		    A 	10.163.96.137
+    www.cas.emse.fr 	PTR 	10.163.96.137
+
+Cette manière n'a pas fonctionné pour les requêtes https, mais cette attaque est très efficace pour les requêtes http qui ne sont pas chiffrées.
+
 
 ## 3. Countermeasures against phishing
 Pour se protéger du phishing, il est recommandé de faire preuve de prudence et de vigilance. Il est important d'être conscient des risques liés aux communications non sollicitées, telles que les emails, les messages ou les appels téléphoniques, qui peuvent chercher à obtenir des informations personnelles ou financières. Il est conseillé de vérifier attentivement l'identité de l'expéditeur en confirmant l'adresse email ou le numéro de téléphone utilisé. Il est également préférable de ne pas cliquer sur des liens suspects, qui peuvent potentiellement rediriger vers des sites web frauduleux. Pour assurer une protection adéquate, il est recommandé de ne partager des informations sensibles que lorsque l'on est certain de la légitimité de la demande. L'activation de l'authentification à deux facteurs lorsqu'elle est disponible et la mise à jour régulière des logiciels utilisés sont des mesures supplémentaires pour renforcer la sécurité en ligne. Enfin, il est bénéfique de se familiariser avec les différentes techniques de phishing afin d'être mieux préparé à les reconnaître et de partager ces connaissances avec d'autres pour les sensibiliser à ces risques potentiels.

@@ -1,0 +1,91 @@
+<!-- 
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+-->
+{% extends "base.html" %}
+{% block title %}SRIE > TP2 - Scanning Networks{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">SRIE > TP2 - Scanning Networks</h2>
+    <div class="container p-5 my-5 border">
+        <!-- Description -->
+        <p class="lead">
+            Network scanning is the process of probing a target network to gather as much information as possible about its systems. It involves looking for live systems in the network, which can be done using various tools, some of which are commonly available, while others may require more advanced techniques. Once live systems are identified, the next step is to determine which ports are open or closed. By analyzing how these systems respond to requests, we can gather more information about the target. Additionally, based on the open ports, we can infer the possible services running on those systems. This information can help us identify the type of operating system or the target itself.
+        </p>
+                
+        <p class="lead">
+            Network scan:
+            During a network scan, an attacker sends packets to the network to find all devices on it. The scan reports information that helps identify which hosts are online, such as using a ping. All IP addresses are captured and examined to group them together in a specific order. For instance, an attacker might identify a range of IP addresses like 192.168.0.x, where the first 10 IPs are reserved for servers and .250 to .255 are for printers or network services. This information can help identify devices on the network, such as making an educated guess about the next sequential IP address of a server. This helps gather more information during the scanning process.
+        </p>
+
+        <p class="lead">
+            Port scan: 
+            As we scan the machines, our objective is to identify open ports. A port is typically an IP address with an attached protocol, as we discussed in previous sessions (please refer to the slides). For example, let's consider the IP address 192.168.0.15. When we add a protocol to it, such as HTTP (192.168.0.15:80), it becomes a port. Port 80 is commonly associated with web pages, and sometimes you may come across port 443 for HTTPS. There are technically 65,535 ports that can be used on each machine. During the port scan, we want to determine which ports are open and which ones are closed. Typically, we focus on the first 1,023 ports. We check which ports are responding and correlate that information with the services that use those ports. This gives us an accurate footprint, or representation, of the machine. You do not need to memorize all the ports, but it's important to be aware of common ones, which can be found in the following link: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports
+        </p>
+
+        <p class="lead">
+            Vulnerability scan: 
+            It is essential to perform vulnerability scans to identify potential threats to operating systems and/or applications installed in your environment. It is crucial to identify the vulnerabilities of these systems and applications. Sometimes, installing a service pack or updating software can inadvertently create new vulnerabilities, which is why conducting frequent scans is important. Just like an IT professional, an attacker will also perform vulnerability scans to identify systems that can be exploited. While we may typically view software as designed for good, it's important to change our perspective and consider what an attacker could do with that software if they gain access to your network. Therefore, performing regular vulnerability scans to assess and address potential vulnerabilities is a critical practice for both IT professionals and attackers alike.
+        </p>
+    </div>
+
+    <!-- Useful tools title -->
+    <h2 class="mt-5 text-center">Useful tools used in this phase</h2>    
+
+    <div class="container p-5 my-5 border">
+        <p class="lead">
+            Below is a list of tools that can be used for this pentesting phase:
+        </p>
+        
+        <ol class="list-group">
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_pingaddr')}}" class="list-group-item-action">Ping an IP address</a></h5>
+                <p class="lead">
+                    Ping can be used during a penetration test to send ICMP Echo Request packets to a target system or 
+                    network, and then analyze the response to gather information about the target. By sending ping requests and 
+                    analyzing the responses, pentesters can determine if a host is online, assess its response time (round-trip time or 
+                    RTT), and identify potential targets for further exploration or exploitation.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_Nmap')}}" class="list-group-item-action">Scan Network with Nmap</a></h5>
+                <p class="lead">
+                    Nmap is a utility for network exploration or security auditing. 
+                    It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). 
+                    Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. 
+                    Most Unix and Windows platforms are supported in both GUI and commandline modes. 
+                    Several popular handheld devices are also supported, including the Sharp Zaurus and the iPAQ.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_DnsRecon')}}" class="list-group-item-action">Dns Enumeration with DNS Recon</a></h5>
+                <p class="lead">
+                    DNSRecon is a widely used Python script that provides comprehensive DNS enumeration capabilities for a domain. 
+                    It allows network administrators, penetration testers, and cybersecurity professionals to gather valuable information about a domain's DNS infrastructure, including DNS servers, hostnames, subdomains, DNS record types, zone transfers, and more. 
+                    DNSRecon automates the process of DNS reconnaissance and provides detailed results that can be used for network mapping, vulnerability assessment, and security auditing. 
+                    It is a popular tool in the arsenal of cybersecurity practitioners for assessing the security posture of a domain's DNS infrastructure.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_DnsEnum')}}" class="list-group-item-action">Dns Enumeration with DNS Enum</a></h5>
+                <p class="lead">
+                    DNSenum is a widely used Perl script that provides comprehensive DNS enumeration capabilities for a domain, including discovering non-contiguous IP blocks. 
+                    It employs multithreading to efficiently gather DNS information, such as DNS servers, hostnames, subdomains, DNS record types, zone transfers, and more. 
+                    DNSenum is known for its speed and effectiveness in automating DNS reconnaissance tasks, making it a popular tool among network administrators, penetration testers, and cybersecurity professionals. 
+                    It provides valuable information for network mapping, vulnerability assessment, and security auditing, aiding in identifying potential security weaknesses in a domain's DNS infrastructure.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_TraceRoute')}}" class="list-group-item-action">Traceroute IPs of interest</a></h5>
+                <p class="lead">
+                    Traceroute is a network diagnostic tool that traces the route taken by IP packets to a specific network or internet host. It reveals the sequence of intermediate machines or routers the packets pass through, along with their IP numbers and host names (if available). This information helps in identifying the network hops taken by the packets, pinpointing potential issues or delays, and aiding in network troubleshooting and optimization.
+                </p>
+            </li>
+        </ol>
+    </div>
+
+</div>
+{% endblock %}
+
