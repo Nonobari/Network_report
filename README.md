@@ -1,9 +1,3 @@
- <style>
-    p {
-      text-align: justify;
-    }
-  </style>
-
 Rapport
 Introduction à la cybersécurité
 ==============
